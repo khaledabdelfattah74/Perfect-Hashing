@@ -31,7 +31,7 @@ class QuadraticSpaceHashing:
     def find(self, key):
         hash_value = self.hash_function.hash_value(key)
         hash_value %= self.size
-        if self.hash_table[hash_value] is not None:
+        if self.hash_table[hash_value] == key:
             return True
         else:
             return False

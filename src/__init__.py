@@ -18,6 +18,9 @@ def main():
         quadratic_hashing = QuadraticSpaceHashing(len(keys))
         quadratic_hashing.build_hash_table(keys)
         print(quadratic_hashing.get_table())
+
+        print(linear_hashing.find(0))
+        print(quadratic_hashing.find(7))
     except KeyboardInterrupt:
         print("Keyboard Interrupt Exception")
     sys.exit(0)
