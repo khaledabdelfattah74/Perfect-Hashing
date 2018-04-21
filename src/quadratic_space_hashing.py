@@ -1,6 +1,5 @@
-import math
 from src.Universal_Hashing import UniversalHashing
-from src.file_reader import find_largest_num, num_of_digits
+from src.attributes import find_largest_num, num_of_digits
 
 
 class QuadraticSpaceHashing:
