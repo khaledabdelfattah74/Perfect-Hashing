@@ -15,4 +15,7 @@ def read_from_file(path):
 
 
 def num_of_digits(num):
-    return math.ceil(math.log(num, 2))
+    digits = math.log(num, 2)
+    if int(digits) == math.ceil(digits):
+        digits += 1
+    return math.ceil(digits)
