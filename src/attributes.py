@@ -14,12 +14,5 @@ def read_from_file(path):
         raise exception
 
 
-def find_largest_num(keys):
-    max_num = 0
-    for i in keys:
-        max_num = max(max_num, i)
-    return num_of_digits(max_num)
-
-
 def num_of_digits(num):
     return math.ceil(math.log(num, 2))

@@ -1,21 +1,22 @@
 from src.Universal_Hashing import UniversalHashing
-from src.attributes import find_largest_num, num_of_digits
+from src.attributes import num_of_digits
 
 
 class QuadraticSpaceHashing:
     def __init__(self, size):
-        self.hash_table = [None for x in range(size * size)]
-        self.size = size * size
+        self.size = int(pow(2, num_of_digits(size * size)))
+        self.hash_table = [None for x in range(self.size)]
         self.hash_function = None
 
     # Build perfect hash table of O(n ^ 2) space
     def build_hash_table(self, keys):
         not_hashed = True
+        b = num_of_digits(self.size)
+        number_of_rehashing = 0
         while not_hashed:
             not_hashed = False
-            u = find_largest_num(keys)
-            b = num_of_digits(self.size)
-            self.hash_function = UniversalHashing(u, b)
+            number_of_rehashing += 1
+            self.hash_function = UniversalHashing(b)
             self.hash_function.build_hash_function()
             for i in range(len(keys)):
                 hash_value = self.hash_function.hash_value(keys[i])
@@ -26,6 +27,9 @@ class QuadraticSpaceHashing:
                     self.hash_table = [None for x in range(self.size)]
                     not_hashed = True
                     break
+            if number_of_rehashing > 1000:
+                print("Rehashing failed")
+                break
 
     # Find Key
     def find(self, key):

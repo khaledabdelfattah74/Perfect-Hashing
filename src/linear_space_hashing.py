@@ -1,19 +1,19 @@
 from src.Universal_Hashing import UniversalHashing
 from src.quadratic_space_hashing import QuadraticSpaceHashing
-from src.attributes import find_largest_num, num_of_digits
+from src.attributes import num_of_digits
 
 
 class LinearSpaceHashing:
     def __init__(self, size):
-        self.hash_table = [[] for x in range(size)]
-        self.size = size
+        self.size = int(pow(2, num_of_digits(size)))
+        self.hash_table = [[] for x in range(self.size)]
         self.hash_function = None
-        self.hash_functions = [QuadraticSpaceHashing for x in range(size)]
+        self.hash_functions = [QuadraticSpaceHashing for x in range(self.size)]
 
+    # Build perfect hash table of O(n ^ 2) space
     def build_hash_table(self, keys):
-        u = find_largest_num(keys)
         b = num_of_digits(self.size)
-        self.hash_function = UniversalHashing(u, b)
+        self.hash_function = UniversalHashing(b)
         self.hash_function.build_hash_function()
         for i in range(len(keys)):
             hash_value = self.hash_function.hash_value(keys[i])

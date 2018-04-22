@@ -7,8 +7,7 @@ from src.quadratic_space_hashing import QuadraticSpaceHashing
 
 def main():
     try:
-        keys = read_from_file("/Users/khaledabdelfattah/PycharmProjects/PerfectHashing/src/dictionary.txt")
-
+        keys = read_from_file("../src/dictionary.txt")
         # Linear space solution
         linear_hashing = LinearSpaceHashing(len(keys))
         linear_hashing.build_hash_table(keys)
@@ -22,7 +21,7 @@ def main():
         print(linear_hashing.find(0))
         print(quadratic_hashing.find(7))
     except KeyboardInterrupt:
-        print("Keyboard Interrupt Exception")
+        raise KeyboardInterrupt
     sys.exit(0)
 
 

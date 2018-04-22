@@ -4,8 +4,8 @@ import random
 
 class UniversalHashing:
     # Constructor
-    def __init__(self, u, b):
-        self.u = u
+    def __init__(self, b):
+        self.u = 32
         self.b = b
         self.hash = [[0 for x in range(self.u)] for y in range(self.b)]
 
@@ -13,8 +13,8 @@ class UniversalHashing:
     def build_hash_function(self):
         for i in range(self.b):
             for j in range(self.u):
-                value = random.randint(0, 1)
-                self.hash[i][j] = value
+                value = random.random()
+                self.hash[i][j] = round(value)
 
     # Calculate the hash value of key using the matrix method
     def hash_value(self, key):
@@ -23,7 +23,7 @@ class UniversalHashing:
             temp = key
             val = 0
             for j in range(self.u):
-                x = self.hash[i][j] * (temp & 1)
+                x = self.hash[i][j] & (temp & 1)
                 temp >>= 1
                 val ^= x
             hash_value |= val
