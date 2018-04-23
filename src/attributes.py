@@ -18,4 +18,4 @@ def num_of_digits(num):
     digits = math.log(num, 2)
     if int(digits) == math.ceil(digits):
         digits += 1
-    return math.ceil(digits)
+    return int(math.ceil(digits))
